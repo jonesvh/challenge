@@ -53,8 +53,7 @@ const AddForm = () => {
                     .required(),
             maritalStatus:
                 yup
-                    .number()
-                    .required(),
+                    .number(),
             spouseName:
                 yup
                     .string()
@@ -63,7 +62,7 @@ const AddForm = () => {
                         then:
                             yup
                                 .string()
-                                .required('poem ai a que manda')
+                                .required('Nome do Cônjuge is a required field when Estado civil is Casado(a)')
                     })
         }),
         onSubmit: values => {
@@ -77,9 +76,6 @@ const AddForm = () => {
 
     const handleUpdateLead = (values) => {
         api.put(`/leads/${values.id}`, {
-            headers: {
-                'Content-Type': 'application/json'
-            },
             nome: values.name,
             email: values.email,
             cpf: NumberOnly(values.cpf),
@@ -96,9 +92,6 @@ const AddForm = () => {
 
     const handleCreateNewLead = (values) => {
         api.post('/leads', {
-            headers: {
-                'Content-Type': 'application/json'
-            },
             nome: values.name,
             email: values.email,
             cpf: NumberOnly(values.cpf),
@@ -199,8 +192,7 @@ const AddForm = () => {
                         value={formik.values.email}
                         flex={1}
                     />
-
-                    {formik.touched.cpf && formik.errors.cpf ? (
+                    {formik.touched.email && formik.errors.email ? (
                         <div>{formik.errors.email}</div>
                     ) : null}
                 </Column>

@@ -9,6 +9,7 @@ import LinkButton from '../../Components/LinkButton';
 
 import { useLeads } from '../../Context/Leads';
 
+import CPFMask from '../../utils/cpfMask';
 import api from '../../Services/api';
 
 
@@ -25,7 +26,7 @@ interface Ilead {
 function ListLeadPage() {
 
     function handleFetchLeads() {
-        api.get('/leads').then(response => {
+        api.get('/leads?_sort=id&_order=desc').then(response => {
             setLeads(response.data)
         })
     }
@@ -39,7 +40,7 @@ function ListLeadPage() {
     const { leads, setLeads } = useLeads();
 
     useEffect(() => {
-        handleFetchLeads()
+        //handleFetchLeads()
     }, [])
 
     return (
@@ -80,7 +81,7 @@ function ListLeadPage() {
                                             <td style={{paddingLeft: 0}}><BsTrash style={{ padding: 0, width: 15, height: 15, cursor: "pointer" }} onClick={(e) => { handleDeleteLead(lead.id) }} /></td>
                                             <td>{lead.email}</td>
                                             <td>{lead.nome}</td>
-                                            <td>{lead.cpf}</td>
+                                            <td>{CPFMask(lead.cpf)}</td>
                                         </TrBody>
                                     );
                                 })

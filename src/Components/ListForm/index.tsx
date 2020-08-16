@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useFormik } from 'formik';
 import Input from '../Input';
 import Button from '../Button';
@@ -17,14 +17,39 @@ const ListForm = () => {
 
     function handleFetchFilterLeads(values) {
 
-        api.get(`/leads?nome=${values.name}&cpf=${NumberOnly(values.cpf)}`).then(response => {
+        handleCreateQuery(values)
+
+        api.get(handleCreateQuery(values), {
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        }).then(response => {
             setLeads(response.data)
         })
     }
 
+    function handleCreateQuery(values) {
+        let query
+        if (values.name && values.cpf)
+            query = `/leads?nome=${values.name}&cpf=${NumberOnly(values.cpf)}&_sort=id&_order=desc`
+        else {
+            if (!values.name && values.cpf) {
+                query = `/leads?cpf=${NumberOnly(values.cpf)}&_sort=id&_order=desc`
+            } else {
+                if (values.name && !values.cpf) {
+                    query = `/leads?nome=${values.name}&_sort=id&_order=desc`
+                }
+            }
+        }
+        return query
+    }
 
     function handleFetchAllLeads() {
-        api.get('/leads').then(response => {
+        api.get('/leads?_sort=id&_order=desc', {
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        }).then(response => {
             setLeads(response.data)
         })
     }
@@ -37,11 +62,15 @@ const ListForm = () => {
         onSubmit: values => {
             if (values.name || values.cpf) {
                 handleFetchFilterLeads(values)
-            }else{
+            } else {
                 handleFetchAllLeads()
             }
         },
     })
+
+    useEffect(() => {
+        handleFetchAllLeads()
+    }, [])
 
     return (
         <StyledForm onSubmit={formik.handleSubmit} autoComplete="off">

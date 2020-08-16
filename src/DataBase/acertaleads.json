@@ -9,45 +9,20 @@
       "nomeConjugue": ""
     },
     {
-      "id": 2,
       "nome": "Márcio dos Santos",
       "email": "marciosantos@gmail.com",
       "cpf": "30356473058",
       "estadoCivil": "1",
-      "nomeConjugue": "Silvana Sporh"
+      "nomeConjugue": "Silvana Sporh",
+      "id": 2
     },
     {
-      "headers": {
-        "Content-Type": "application/json"
-      },
-      "nome": "Samara",
-      "email": "samara@gmail.com",
-      "cpf": "19238478920",
-      "estadoCivil": "3",
-      "nomeConjugue": "",
-      "id": 4
-    },
-    {
-      "headers": {
-        "Content-Type": "application/json"
-      },
       "nome": "jones",
       "email": "jonesveriato@gmail.com",
-      "cpf": "12930821903",
+      "cpf": "03407568029",
       "estadoCivil": "1",
-      "nomeConjugue": "",
-      "id": 5
-    },
-    {
-      "headers": {
-        "Content-Type": "application/json"
-      },
-      "nome": "jones",
-      "email": "jones@gmail.com",
-      "cpf": "21903812903",
-      "estadoCivil": "0",
-      "nomeConjugue": "",
-      "id": 6
+      "nomeConjugue": "Samara",
+      "id": 3
     }
   ],
   "tiposEstadoCivil": [

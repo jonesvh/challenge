@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import InputMask from 'react-input-mask'
 
 interface Iprops {
     justifycontent?: string;
