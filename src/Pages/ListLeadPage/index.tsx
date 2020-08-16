@@ -8,7 +8,10 @@ import ListForm from '../../Components/ListForm';
 import LinkButton from '../../Components/LinkButton';
 //import InputMask from 'react-input-mask';
 
+import LeadsProvider, { useLeads } from '../../context/Leads';
+
 import api from '../../services/api';
+
 
 interface Ilead {
     id: number;
@@ -37,9 +40,11 @@ function ListLeadPage() {
         })
     }
 
-    const [Leads, setLeads] = useState([
-        { id: 0, nome: '', email: '', cpf: '', estadoCivil: '', nomeConjugue: '' }
-    ])
+    const { leads, setLeads } = useLeads();
+
+    // const [Leads, setLeads] = useState([
+    //     { id: 0, nome: '', email: '', cpf: '', estadoCivil: '', nomeConjugue: '' }
+    // ])
 
     useEffect(() => {
         handleFetchLeads()
@@ -56,7 +61,7 @@ function ListLeadPage() {
                     bgcolor="#F79028"
                     bgcolorhover="#e08427"
                 />
-                {Leads.length > 0 &&
+                {leads.length > 0 &&
                     <Table className="pure-table">
                         <thead>
                             <tr>
@@ -69,7 +74,7 @@ function ListLeadPage() {
                         </thead>
                         <Tbody>
                             {
-                                Leads.map(function (lead) {
+                                leads.map(function (lead) {
                                     return (
                                         <TrBody key={lead.id}>
                                             <td><BsPencilSquare style={{ width: 25, height: 25, cursor: "pointer" }} onClick={(e) => { handleEditLead(lead.id) }} /></td>

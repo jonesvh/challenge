@@ -15,6 +15,17 @@
       "cpf": "30356473058",
       "estadoCivil": "Casado(a)",
       "nomeConjugue": "Silvana Sporh"
+    },
+    {
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "nome": "jones",
+      "email": "jonesveriato@gmail.com",
+      "cpf": "03407568029",
+      "estadoCivil": "1",
+      "nomeConjugue": "Samara",
+      "id": 3
     }
   ],
   "tiposEstadoCivil": [

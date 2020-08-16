@@ -3,10 +3,22 @@ import { useFormik } from 'formik';
 import Input from '../Input';
 import Button from '../Button';
 
+import api from '../../services/api';
+
+import { useLeads } from '../../context/Leads';
+
 import { StyledForm, Row, Column, Label } from './styles'
 
 
 const ListForm = () => {
+
+    const { leads, setLeads } = useLeads();
+
+    function handleFetchFilterLeads(values) {
+        api.get(`/leads?nome=${values.name}&cpf=${values.cpf}`).then(response => {
+            setLeads(response.data)
+        })
+    }
 
     const formik = useFormik({
         initialValues: {
@@ -14,7 +26,7 @@ const ListForm = () => {
             cpf: ''
         },
         onSubmit: values => {
-            alert(JSON.stringify(values, null, 2))
+            handleFetchFilterLeads(values)
         },
     })
 

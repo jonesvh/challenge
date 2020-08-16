@@ -63,6 +63,9 @@ const AddForm = () => {
 
     const handleCreateNewLead = (values) => {
         api.post('/leads', {
+            headers: {
+                'Content-Type': 'application/json'
+            },
             nome: values.name,
             email: values.email,
             cpf: values.cpf,

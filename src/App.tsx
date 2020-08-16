@@ -1,13 +1,16 @@
-import React, {  } from 'react';
+import React, { } from 'react';
 import GlobalStyle from './styles/global';
 import Routes from './routes';
+import LeadsProvider from './context/Leads';
 
 function App() {
   return (
-    <div className="App">
-      <GlobalStyle/>
-      <Routes/>
-    </div>
+    <LeadsProvider>
+      <div className="App">
+        <GlobalStyle />
+        <Routes />
+      </div>
+    </LeadsProvider>
   );
 }
 
