@@ -1,16 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 
 import { BsPencilSquare, BsTrash } from 'react-icons/bs'
 
-import { Container, Content, Table, Tbody, ThHead, TrBody } from './styles'
+import { Container, Content, Table, Tbody, ThHead, TrBody, StyledLink } from './styles'
 import PageHeader from '../../Components/PageHeader';
 import ListForm from '../../Components/ListForm';
 import LinkButton from '../../Components/LinkButton';
-//import InputMask from 'react-input-mask';
 
-import LeadsProvider, { useLeads } from '../../context/Leads';
+import { useLeads } from '../../Context/Leads';
 
-import api from '../../services/api';
+import api from '../../Services/api';
 
 
 interface Ilead {
@@ -22,9 +21,6 @@ interface Ilead {
     nomeConjugue: string;
 }
 
-async function handleEditLead(id: number) {
-
-}
 
 function ListLeadPage() {
 
@@ -41,10 +37,6 @@ function ListLeadPage() {
     }
 
     const { leads, setLeads } = useLeads();
-
-    // const [Leads, setLeads] = useState([
-    //     { id: 0, nome: '', email: '', cpf: '', estadoCivil: '', nomeConjugue: '' }
-    // ])
 
     useEffect(() => {
         handleFetchLeads()
@@ -77,8 +69,15 @@ function ListLeadPage() {
                                 leads.map(function (lead) {
                                     return (
                                         <TrBody key={lead.id}>
-                                            <td><BsPencilSquare style={{ width: 25, height: 25, cursor: "pointer" }} onClick={(e) => { handleEditLead(lead.id) }} /></td>
-                                            <td><BsTrash style={{ width: 25, height: 25, cursor: "pointer" }} onClick={(e) => { handleDeleteLead(lead.id) }} /></td>
+                                            <td>
+                                                <StyledLink to={{
+                                                    pathname: '/add',
+                                                    state: lead.id,
+                                                }}>
+                                                    <BsPencilSquare style={{ padding: 0, width: 15, height: 15, cursor: "pointer" }} />
+                                                </StyledLink>
+                                            </td>
+                                            <td style={{paddingLeft: 0}}><BsTrash style={{ padding: 0, width: 15, height: 15, cursor: "pointer" }} onClick={(e) => { handleDeleteLead(lead.id) }} /></td>
                                             <td>{lead.email}</td>
                                             <td>{lead.nome}</td>
                                             <td>{lead.cpf}</td>

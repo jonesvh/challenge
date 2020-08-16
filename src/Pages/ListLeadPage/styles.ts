@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 interface IpropsRowColumn {
     justifycontent?: string;
@@ -61,4 +62,11 @@ const ThHead = styled.th`
     font-weight: 500;
 `
 
-export { Container, Content, Label, Filter, Row, Column, Table, Tbody, ThHead, TrBody };
+const StyledLink = styled(Link)`
+    padding: 0;
+    &:visited {
+        color: #111;
+    }
+`
+
+export { Container, Content, Label, Filter, Row, Column, Table, Tbody, ThHead, TrBody, StyledLink };

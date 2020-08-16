@@ -2,20 +2,29 @@ import React from 'react';
 import { useFormik } from 'formik';
 import Input from '../Input';
 import Button from '../Button';
+import api from '../../Services/api';
 
-import api from '../../services/api';
+import NumberOnly from '../../utils/numberOnly';
 
-import { useLeads } from '../../context/Leads';
+import { useLeads } from '../../Context/Leads';
 
 import { StyledForm, Row, Column, Label } from './styles'
 
 
 const ListForm = () => {
 
-    const { leads, setLeads } = useLeads();
+    const { setLeads } = useLeads();
 
     function handleFetchFilterLeads(values) {
-        api.get(`/leads?nome=${values.name}&cpf=${values.cpf}`).then(response => {
+
+        api.get(`/leads?nome=${values.name}&cpf=${NumberOnly(values.cpf)}`).then(response => {
+            setLeads(response.data)
+        })
+    }
+
+
+    function handleFetchAllLeads() {
+        api.get('/leads').then(response => {
             setLeads(response.data)
         })
     }
@@ -26,12 +35,16 @@ const ListForm = () => {
             cpf: ''
         },
         onSubmit: values => {
-            handleFetchFilterLeads(values)
+            if (values.name || values.cpf) {
+                handleFetchFilterLeads(values)
+            }else{
+                handleFetchAllLeads()
+            }
         },
     })
 
     return (
-        <StyledForm onSubmit={formik.handleSubmit}>
+        <StyledForm onSubmit={formik.handleSubmit} autoComplete="off">
             <Row>
                 <Label>Filtros</Label>
             </Row>
@@ -54,12 +67,13 @@ const ListForm = () => {
                         onChange={formik.handleChange}
                         value={formik.values.cpf}
                         flex={1}
+                        mask="999.999.999-29"
                     />
                 </Column>
             </Row>
             <Row>
                 <Column
-                     justifycontent="flex-end"
+                    justifycontent="flex-end"
                 >
                     <Button
                         label="Filtrar"

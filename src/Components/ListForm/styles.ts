@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import InputMask from 'react-input-mask'
 
 interface Iprops {
     justifycontent?: string;
@@ -14,6 +15,7 @@ const StyledForm = styled.form `
     font-size: 13px;
     margin-top: 15px;
     padding:5px;
+    autocomplete:"off"
 `
 
 const Row = styled.div<Iprops> `
@@ -34,4 +36,5 @@ const Label = styled.div`
     font-weight: 600;
     font-size: 15px
 `
+
 export { StyledForm, Row, Label, Column }

@@ -5,7 +5,7 @@
       "nome": "João da Silva Siqueira",
       "email": "joaosiqueira@gmail.com",
       "cpf": "05537357054",
-      "estadoCivil": "Solteiro(a)",
+      "estadoCivil": "0",
       "nomeConjugue": ""
     },
     {
@@ -13,8 +13,19 @@
       "nome": "Márcio dos Santos",
       "email": "marciosantos@gmail.com",
       "cpf": "30356473058",
-      "estadoCivil": "Casado(a)",
+      "estadoCivil": "1",
       "nomeConjugue": "Silvana Sporh"
+    },
+    {
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "nome": "Samara",
+      "email": "samara@gmail.com",
+      "cpf": "19238478920",
+      "estadoCivil": "3",
+      "nomeConjugue": "",
+      "id": 4
     },
     {
       "headers": {
@@ -22,10 +33,21 @@
       },
       "nome": "jones",
       "email": "jonesveriato@gmail.com",
-      "cpf": "03407568029",
+      "cpf": "12930821903",
       "estadoCivil": "1",
-      "nomeConjugue": "Samara",
-      "id": 3
+      "nomeConjugue": "",
+      "id": 5
+    },
+    {
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "nome": "jones",
+      "email": "jones@gmail.com",
+      "cpf": "21903812903",
+      "estadoCivil": "0",
+      "nomeConjugue": "",
+      "id": 6
     }
   ],
   "tiposEstadoCivil": [

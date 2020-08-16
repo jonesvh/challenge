@@ -6,12 +6,27 @@ import Button from '../Button';
 import Select from '../Select';
 import LinkButton from '../LinkButton';
 
-import api from '../../services/api';
+import NumberOnly from '../../utils/numberOnly';
+
+import api from '../../Services/api';
 
 import { StyledForm, Row, Column, Label } from './styles'
-import { useHistory } from 'react-router';
+import { useHistory, useLocation } from 'react-router';
 
 const AddForm = () => {
+
+    const [isUpdate, setIsUpdate] = useState(false)
+    const [labelButton, setLabelButton] = useState("")
+    const [initialValues, setInitialValues] = useState({
+        id: 0,
+        name: '',
+        cpf: '',
+        email: '',
+        maritalStatus: '',
+        spouseName: ''
+    })
+
+    const location = useLocation();
 
     const history = useHistory()
 
@@ -20,13 +35,8 @@ const AddForm = () => {
     ])
 
     const formik = useFormik({
-        initialValues: {
-            name: '',
-            cpf: '',
-            email: '',
-            maritalStatus: '',
-            spouseName: ''
-        },
+        initialValues: initialValues,
+        enableReinitialize: true,
         validationSchema: yup.object().shape({
             name:
                 yup
@@ -34,7 +44,7 @@ const AddForm = () => {
                     .required("Name is a required field"),
             cpf:
                 yup
-                    .number()
+                    .string()
                     .required("CPF is a required field"),
             email:
                 yup
@@ -49,17 +59,40 @@ const AddForm = () => {
                 yup
                     .string()
                     .when('maritalStatus', {
-                        is: 'married',
+                        is: 1,
                         then:
                             yup
                                 .string()
-                                .required()
+                                .required('poem ai a que manda')
                     })
         }),
         onSubmit: values => {
-            handleCreateNewLead(values)
+            if (isUpdate) {
+                handleUpdateLead(values)
+            } else {
+                handleCreateNewLead(values)
+            }
         },
     })
+
+    const handleUpdateLead = (values) => {
+        api.put(`/leads/${values.id}`, {
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            nome: values.name,
+            email: values.email,
+            cpf: NumberOnly(values.cpf),
+            estadoCivil: values.maritalStatus,
+            nomeConjugue: values.spouseName
+        }).then(() => {
+            alert('Cadastro atualizado com sucesso')
+            history.push('/')
+        }).catch((err) => {
+            console.log(err)
+            alert('Erro ao atualizar cadastro.')
+        })
+    }
 
     const handleCreateNewLead = (values) => {
         api.post('/leads', {
@@ -68,7 +101,7 @@ const AddForm = () => {
             },
             nome: values.name,
             email: values.email,
-            cpf: values.cpf,
+            cpf: NumberOnly(values.cpf),
             estadoCivil: values.maritalStatus,
             nomeConjugue: values.spouseName
         }).then(() => {
@@ -93,14 +126,36 @@ const AddForm = () => {
         formik.values.spouseName = ''
     }
 
+    const handleLoadLead = (dados) => {
+        setIsUpdate(true)
+        setInitialValues({
+            id: dados.id,
+            name: dados.nome,
+            cpf: dados.cpf,
+            email: dados.email,
+            maritalStatus: dados.estadoCivil,
+            spouseName: dados.nomeConjugue,
+        })
+    }
+
     useEffect(() => {
+
         api.get('/tiposEstadoCivil').then(response => {
             setMaritalStatusOptions(response.data)
         })
+
+        if (location.state !== undefined && location.state !== 0) {
+            setLabelButton("Atualizar")
+            api.get(`leads/${location.state}`).then(response => {
+                handleLoadLead(response.data)
+            })
+        }else{
+            setLabelButton("Cadastrar")
+        }
     }, [])
 
     return (
-        <StyledForm onSubmit={formik.handleSubmit}>
+        <StyledForm onSubmit={formik.handleSubmit} autoComplete="off">
             <Row>
                 <Label>Dados</Label>
             </Row>
@@ -127,6 +182,7 @@ const AddForm = () => {
                         onChange={formik.handleChange}
                         value={formik.values.cpf}
                         flex={1}
+                        mask={"999.999.999-99"}
                     />
                     {formik.touched.cpf && formik.errors.cpf ? (
                         <div>{formik.errors.cpf}</div>
@@ -145,7 +201,7 @@ const AddForm = () => {
                     />
 
                     {formik.touched.cpf && formik.errors.cpf ? (
-                        <div>{formik.errors.cpf}</div>
+                        <div>{formik.errors.email}</div>
                     ) : null}
                 </Column>
 
@@ -177,6 +233,9 @@ const AddForm = () => {
                         flex={1}
                         disabled={handleToggleDisabledInput()}
                     />
+                     {formik.touched.spouseName && formik.errors.spouseName ? (
+                        <div>{formik.errors.spouseName}</div>
+                    ) : null}
                 </Column>
                 <Column />
             </Row>
@@ -197,7 +256,7 @@ const AddForm = () => {
                     justifycontent="flex-end"
                 >
                     <Button
-                        label="Cadastrar"
+                        label={labelButton}
                         bgcolor="#F79028"
                         bgcolorhover="#e08427"
                         type="submit"
