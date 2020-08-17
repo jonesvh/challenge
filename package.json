@@ -15,7 +15,9 @@
     "@types/react-dom": "^16.9.0",
     "axios": "^0.19.2",
     "express": "^4.17.1",
+    "express-favicon": "^2.0.1",
     "formik": "^2.1.5",
+    "path": "^0.12.7",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-icons": "^3.10.0",
@@ -28,7 +30,7 @@
   },
   "scripts": {
     "startdev": "react-scripts start",
-    "start": "node src/server.js",
+    "start": "node server.js",
     "postinstall": "tsc",
     "build": "react-scripts build",
     "test": "react-scripts test",
