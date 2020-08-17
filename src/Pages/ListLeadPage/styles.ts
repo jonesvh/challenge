@@ -64,11 +64,15 @@ const ThHead = styled.th`
 `
 
 const StyledLink = styled(Link)`
-    padding: 0;
+    outline:0;
+    border: 0 none;
+    cursor: pointer;
+    text-align:center;
     text-decoration: none;
+    padding: 0px;
     &:visited {
         color: #111;
-    }
+    } 
 `
 
 export { Container, Content, Label, Filter, Row, Column, Table, Tbody, ThHead, TrBody, StyledLink };

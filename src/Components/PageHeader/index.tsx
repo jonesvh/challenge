@@ -11,7 +11,7 @@ const PageHeader: React.FC<TitleProps> = ({title}) => {
     return (
         <>
             <Header>
-                {/* <Image src={logo} alt="logo" /> */}
+                <Image src={logo} alt="logo" />
             </Header>
 
             <Title className="label">{title}</Title>
