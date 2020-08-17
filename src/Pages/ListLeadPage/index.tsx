@@ -55,7 +55,8 @@ function ListLeadPage() {
                     bgcolorhover="#e08427"
                 />
                 {leads.length > 0 &&
-                    <Table className="pure-table">
+
+                    <Table>
                         <thead>
                             <tr>
                                 <ThHead></ThHead>
@@ -78,7 +79,7 @@ function ListLeadPage() {
                                                     <BsPencilSquare style={{ padding: 0, width: 15, height: 15, cursor: "pointer" }} />
                                                 </StyledLink>
                                             </td>
-                                            <td style={{paddingLeft: 0}}><BsTrash style={{ padding: 0, width: 15, height: 15, cursor: "pointer" }} onClick={(e) => { handleDeleteLead(lead.id) }} /></td>
+                                            <td style={{ paddingLeft: 0 }}><BsTrash style={{ padding: 0, width: 15, height: 15, cursor: "pointer" }} onClick={(e) => { handleDeleteLead(lead.id) }} /></td>
                                             <td>{lead.email}</td>
                                             <td>{lead.nome}</td>
                                             <td>{CPFMask(lead.cpf)}</td>
