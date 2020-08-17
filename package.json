@@ -18,6 +18,7 @@
     "express": "^4.17.1",
     "express-favicon": "^2.0.1",
     "formik": "^2.1.5",
+    "json-server": "^0.16.1",
     "path": "^0.12.7",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -34,6 +35,7 @@
     "startdev": "react-scripts start",
     "builddev": "react-scripts build",
     "start": "node server.js",
+    "poststart": "json-server ./src/database/acertaleads.json --watch -p 3333",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
