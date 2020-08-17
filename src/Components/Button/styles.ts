@@ -32,6 +32,7 @@ const ButtonItem = styled.button<Iprops> `
     @media(min-width: 801px) {
         font-size: 18px;
         width: 7rem;
+        font-weight: 500;
     }
 
     &:hover {

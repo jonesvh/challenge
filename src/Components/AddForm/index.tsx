@@ -14,7 +14,7 @@ import { useHistory, useLocation } from 'react-router';
 
 import api from '../../services/api';
 
-import { StyledForm, Row, Column, Label } from './styles'
+import { StyledForm, Row, Column, Label, ErrorMsg } from './styles'
 
 const AddForm = () => {
 
@@ -45,11 +45,16 @@ const AddForm = () => {
                     .required("Name is a required field"),
             cpf:
                 yup
-                    .string().length(11, 'CPF must be exactly 11 characters')
-                    .required("CPF is a required field"),
+                    .string().required('CPF is a required field')
+                    .test(
+                        'cpf',
+                        'CPF must be exactly 11 characters',
+                        value => { return NumberOnly(value)?.length === 11 },
+                    ),
             email:
                 yup
                     .string()
+                    .matches(/\D+/g, 'only digits here')
                     .email()
                     .required('Email is a required field'),
             maritalStatus:
@@ -63,7 +68,7 @@ const AddForm = () => {
                         then:
                             yup
                                 .string()
-                                .required("Spouse Name is a required field when Marital State is Married")
+                                .required('Spouse Name is a required field')
                     })
         }),
         onSubmit: values => {
@@ -143,7 +148,7 @@ const AddForm = () => {
             api.get(`leads/${location.state}`).then(response => {
                 handleLoadLead(response.data)
             })
-        }else{
+        } else {
             setLabelButton("Save")
         }
     }, [])
@@ -160,13 +165,12 @@ const AddForm = () => {
                         label="Name"
                         type="text"
                         onChange={formik.handleChange}
-                        onBlur={formik.handleBlur}
+                        // //onBlur={formik.handleBlur}
                         value={formik.values.name}
                         flex={1}
+                        error={!formik.touched.name && !formik.errors.name}
+                        msgerror={formik.errors.name}
                     />
-                    {formik.touched.name && formik.errors.name ? (
-                        <div>{formik.errors.name}</div>
-                    ) : null}
                 </Column>
                 <Column>
                     <Input
@@ -174,13 +178,13 @@ const AddForm = () => {
                         label="CPF"
                         type="text"
                         onChange={formik.handleChange}
+                        // onBlur={formik.handleBlur}
                         value={formik.values.cpf}
                         flex={1}
                         mask={"999.999.999-99"}
+                        error={!formik.touched.cpf && !formik.errors.cpf}
+                        msgerror={formik.errors.cpf}
                     />
-                    {formik.touched.cpf && formik.errors.cpf ? (
-                        <div>{formik.errors.cpf}</div>
-                    ) : null}
                 </Column>
             </Row>
             <Row>
@@ -190,12 +194,12 @@ const AddForm = () => {
                         label="Email"
                         type="email "
                         onChange={formik.handleChange}
+                        // onBlur={formik.handleBlur}
                         value={formik.values.email}
                         flex={1}
+                        error={!formik.touched.email && !formik.errors.email}
+                        msgerror={formik.errors.email}
                     />
-                    {formik.touched.email && formik.errors.email ? (
-                        <div>{formik.errors.email}</div>
-                    ) : null}
                 </Column>
 
                 <Column>
@@ -204,6 +208,7 @@ const AddForm = () => {
                         name="maritalStatus"
                         label="Marital Status"
                         onChange={formik.handleChange}
+                        // onBlur={formik.handleBlur}
                         value={formik.values.maritalStatus}
                         options={
                             maritalStatusOptions.map((e, index) => {
@@ -222,13 +227,13 @@ const AddForm = () => {
                         label="Spouse Name"
                         type="text"
                         onChange={formik.handleChange}
+                        // onBlur={formik.handleBlur}
                         value={formik.values.spouseName}
                         flex={1}
                         disabled={handleToggleDisabledInput()}
+                        error={!formik.touched.spouseName && !formik.errors.spouseName}
+                        msgerror={formik.errors.spouseName}
                     />
-                     {formik.touched.spouseName && formik.errors.spouseName ? (
-                        <div>{formik.errors.spouseName}</div>
-                    ) : null}
                 </Column>
                 <Column />
             </Row>

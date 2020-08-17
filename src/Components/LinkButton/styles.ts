@@ -39,6 +39,7 @@ const StyledLink = styled(Link)<Iprops> `
         font-size: 18px;
         width: 7rem;
         padding: 8px;
+        font-weight: 500;
     }
 `
 export { ContainerButtonNew, StyledLink }

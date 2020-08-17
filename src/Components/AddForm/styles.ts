@@ -44,4 +44,5 @@ const Label = styled.div`
         font-size: 18px;
     }
 `
-export { StyledForm, Row, Label, Column }
+
+export { StyledForm, Row, Column, Label }

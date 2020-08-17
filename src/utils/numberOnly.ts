@@ -1,6 +1,8 @@
 function NumberOnly(string) {
-    const number = string.replace(/\D+/g, '')
-    return number
+    if (string !== undefined && string !== null) {
+        const number = string.replace(/\D+/g, '')
+        return number
+    }
 }
 
 export default NumberOnly;

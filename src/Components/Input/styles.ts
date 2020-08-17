@@ -30,7 +30,6 @@ const InputItem = styled.input<Iprops> `
 `
 const Label = styled.label`
     color: #020202;
-    
     @media(max-width: 400px){
         font-size: 14px;
     }
@@ -53,8 +52,23 @@ const StyleInputMask = styled(InputMask)<Iprops> `
     &:disabled {
         cursor: not-allowed;
         background: #D4D4D4;
-    };
-    
+    };   
+`
+const ErrorMsg = styled.div `
+    display:flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-end;
+    width: 100%;
+    padding: 0px;
+    @media(max-width: 400px){
+        display:none;
+    }
+`
+const ErrorMsgText = styled.div `
+    padding-top: 0;
+    color: #ff0000;
+    text-align: end;
 `
 
-export { InputContainer, InputItem, Label, StyleInputMask };
+export { InputContainer, InputItem, Label, StyleInputMask, ErrorMsg, ErrorMsgText };
