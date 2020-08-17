@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import * as yup from 'yup';
+
 import { useFormik } from 'formik';
+import * as yup from 'yup';
+
 import Input from '../Input';
 import Button from '../Button';
 import Select from '../Select';
@@ -8,12 +10,16 @@ import LinkButton from '../LinkButton';
 
 import NumberOnly from '../../utils/numberOnly';
 
+import { useHistory, useLocation } from 'react-router';
+
 import api from '../../Services/api';
 
 import { StyledForm, Row, Column, Label } from './styles'
-import { useHistory, useLocation } from 'react-router';
 
 const AddForm = () => {
+
+    const location = useLocation();
+    const history = useHistory()
 
     const [isUpdate, setIsUpdate] = useState(false)
     const [labelButton, setLabelButton] = useState("")
@@ -25,11 +31,6 @@ const AddForm = () => {
         maritalStatus: '',
         spouseName: ''
     })
-
-    const location = useLocation();
-
-    const history = useHistory()
-
     const [maritalStatusOptions, setMaritalStatusOptions] = useState([
         { nomeEstadoCivil: "" }
     ])
