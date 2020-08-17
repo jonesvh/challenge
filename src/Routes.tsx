@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
-import ListLeadPage from '../src/Pages/ListLeadPage';
-import CreateLeadPage from '../src/Pages/CreateLeadPage';
+import ListLeadPage from '../src/pages/listLeadPage';
+import CreateLeadPage from '../src/pages/createLeadPage';
 
 function Routes() {
     return (

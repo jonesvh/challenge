@@ -1,8 +1,8 @@
 import React from 'react';
 
 import { Container, Content } from './styles';
-import PageHeader from '../../Components/PageHeader';
-import AddForm from '../../Components/AddForm';
+import PageHeader from '../../components/pageHeader';
+import AddForm from '../../components/addForm';
 
 function CreateLeadPage() {
     return (

@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { useFormik } from 'formik';
-import Input from '../Input';
-import Button from '../Button';
-import api from '../../Services/api';
+import Input from '../input';
+import Button from '../button';
+import api from '../../services/api';
 
 import NumberOnly from '../../utils/numberOnly';
 

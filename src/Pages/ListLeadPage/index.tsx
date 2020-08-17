@@ -3,14 +3,14 @@ import React, { useEffect } from 'react';
 import { BsPencilSquare, BsTrash } from 'react-icons/bs'
 
 import { Container, Content, Table, Tbody, ThHead, TrBody, StyledLink } from './styles'
-import PageHeader from '../../Components/PageHeader';
-import ListForm from '../../Components/ListForm';
-import LinkButton from '../../Components/LinkButton';
+import PageHeader from '../../components/pageHeader';
+import ListForm from '../../components/listForm';
+import LinkButton from '../../components/linkButton';
 
 import { useLeads } from '../../context/Leads';
 
 import CPFMask from '../../utils/cpfMask';
-import api from '../../Services/api';
+import api from '../../services/api';
 
 
 interface Ilead {
