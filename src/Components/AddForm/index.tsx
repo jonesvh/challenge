@@ -44,13 +44,13 @@ const AddForm = () => {
                     .required("Name is a required field"),
             cpf:
                 yup
-                    .string()
+                    .string().length(11, 'CPF must be exactly 11 characters')
                     .required("CPF is a required field"),
             email:
                 yup
                     .string()
                     .email()
-                    .required(),
+                    .required('Email is a required field'),
             maritalStatus:
                 yup
                     .number(),
@@ -62,7 +62,7 @@ const AddForm = () => {
                         then:
                             yup
                                 .string()
-                                .required('Nome do Cônjuge is a required field when Estado civil is Casado(a)')
+                                .required("Spouse Name is a required field when Marital State is Married")
                     })
         }),
         onSubmit: values => {
@@ -138,25 +138,25 @@ const AddForm = () => {
         })
 
         if (location.state !== undefined && location.state !== 0) {
-            setLabelButton("Atualizar")
+            setLabelButton("Update")
             api.get(`leads/${location.state}`).then(response => {
                 handleLoadLead(response.data)
             })
         }else{
-            setLabelButton("Cadastrar")
+            setLabelButton("Save")
         }
     }, [])
 
     return (
         <StyledForm onSubmit={formik.handleSubmit} autoComplete="off">
             <Row>
-                <Label>Dados</Label>
+                <Label></Label>
             </Row>
             <Row>
                 <Column>
                     <Input
                         name="name"
-                        label="Nome"
+                        label="Name"
                         type="text"
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
@@ -201,7 +201,7 @@ const AddForm = () => {
 
                     <Select
                         name="maritalStatus"
-                        label="Estado Civil"
+                        label="Marital Status"
                         onChange={formik.handleChange}
                         value={formik.values.maritalStatus}
                         options={
@@ -218,7 +218,7 @@ const AddForm = () => {
                 <Column>
                     <Input
                         name="spouseName"
-                        label="Nome do Cônjuge"
+                        label="Spouse Name"
                         type="text"
                         onChange={formik.handleChange}
                         value={formik.values.spouseName}
@@ -239,7 +239,7 @@ const AddForm = () => {
                 >
                     <LinkButton
                         to="/"
-                        label="Cancelar"
+                        label="Cancel"
                         bgcolor="#989898"
                         bgcolorhover="#807f7f"
                     />

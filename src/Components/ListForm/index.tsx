@@ -75,13 +75,13 @@ const ListForm = () => {
     return (
         <StyledForm onSubmit={formik.handleSubmit} autoComplete="off">
             <Row>
-                <Label>Filtros</Label>
+                <Label>Filters</Label>
             </Row>
             <Row>
                 <Column>
                     <Input
                         name="name"
-                        label="Nome"
+                        label="Name"
                         type="text"
                         onChange={formik.handleChange}
                         value={formik.values.name}
@@ -105,7 +105,7 @@ const ListForm = () => {
                     justifycontent="flex-end"
                 >
                     <Button
-                        label="Filtrar"
+                        label="Search"
                         bgcolor="#F79028"
                         bgcolorhover="#e08427"
                         type="submit"

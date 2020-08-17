@@ -17,26 +17,34 @@
       "id": 2
     },
     {
-      "nome": "jones",
-      "email": "jonesveriato@gmail.com",
-      "cpf": "03407568029",
-      "estadoCivil": "1",
-      "nomeConjugue": "Samara",
-      "id": 3
+      "nome": "Samara",
+      "email": "samaraep23@gmail.com",
+      "cpf": "02437873082",
+      "estadoCivil": "2",
+      "nomeConjugue": "",
+      "id": 4
+    },
+    {
+      "nome": "Jones",
+      "email": "jones@gmail.com",
+      "cpf": "210839012",
+      "estadoCivil": "0",
+      "nomeConjugue": "",
+      "id": 5
     }
   ],
   "tiposEstadoCivil": [
     {
-      "nomeEstadoCivil": "Solteiro(a)"
+      "nomeEstadoCivil": "Single"
     },
     {
-      "nomeEstadoCivil": "Casado(a)"
+      "nomeEstadoCivil": "Married"
     },
     {
-      "nomeEstadoCivil": "Viúvo(a)"
+      "nomeEstadoCivil": "Widower"
     },
     {
-      "nomeEstadoCivil": "Separado(a)"
+      "nomeEstadoCivil": "Divorced"
     }
   ]
 }

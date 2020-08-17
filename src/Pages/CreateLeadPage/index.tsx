@@ -8,7 +8,7 @@ function CreateLeadPage() {
     return (
         <Container>
             <Content>
-                <PageHeader title="Cadastro de Leads"/>
+                <PageHeader title="Register a Lead"/>
                 <AddForm/>
             </Content>
         </Container>

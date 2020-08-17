@@ -1,5 +1,8 @@
 {
   "name": "leads",
+  "engines": {
+    "node": ">=12.18.3"
+  },
   "version": "0.1.0",
   "private": true,
   "dependencies": {

@@ -46,11 +46,11 @@ function ListLeadPage() {
     return (
         <Container>
             <Content>
-                <PageHeader title="Consulta de Leads" />
+                <PageHeader title="Search Leads" />
                 <ListForm />
                 <LinkButton
                     to="/add"
-                    label="Novo Lead"
+                    label="New Lead"
                     bgcolor="#F79028"
                     bgcolorhover="#e08427"
                 />
@@ -62,7 +62,7 @@ function ListLeadPage() {
                                 <ThHead></ThHead>
                                 <ThHead></ThHead>
                                 <ThHead>Email</ThHead>
-                                <ThHead>Nome</ThHead>
+                                <ThHead>Name</ThHead>
                                 <ThHead>CPF</ThHead>
                             </tr>
                         </thead>
