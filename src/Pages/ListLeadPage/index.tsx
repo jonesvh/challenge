@@ -27,6 +27,7 @@ function ListLeadPage() {
 
     function handleFetchLeads() {
         api.get('/leads?_sort=id&_order=desc').then(response => {
+            console.log(response)
             setLeads(response.data)
         })
     }
