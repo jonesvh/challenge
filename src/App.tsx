@@ -1,6 +1,6 @@
 import React, { } from 'react';
 import GlobalStyle from './global';
-import Routes from './Routes';
+import Routes from './routes';
 import LeadsProvider from './context/Leads';
 
 function App() {
