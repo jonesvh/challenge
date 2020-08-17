@@ -1,5 +1,5 @@
 import React, { } from 'react';
-import GlobalStyle from './Styles/global';
+import GlobalStyle from './global';
 import Routes from './Routes';
 import LeadsProvider from './Context/Leads';
 
