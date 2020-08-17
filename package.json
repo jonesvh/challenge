@@ -33,7 +33,7 @@
   "scripts": {
     "startdev": "react-scripts start",
     "builddev": "react-scripts build",
-    "start": "ts-node server.ts",
+    "start": "node server.js",
     "build": "tsc",
     "postinstall": "yarn build",
     "test": "react-scripts test",
