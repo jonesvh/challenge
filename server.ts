@@ -12,6 +12,9 @@ app.get('/ping', function (req, res) {
  return res.send('pong');
 });
 app.get('*', function (req, res) {
+
+  console.log(path.join(__dirname, 'build', 'index.html'))
+
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 app.listen(port, ()=>{console.log(`listen port ${port}`)});
