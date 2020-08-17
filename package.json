@@ -34,8 +34,6 @@
     "startdev": "react-scripts start",
     "builddev": "react-scripts build",
     "start": "node server.js",
-    "build": "tsc",
-    "postinstall": "yarn build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
