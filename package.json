@@ -35,7 +35,6 @@
     "startdev": "react-scripts start",
     "builddev": "react-scripts build",
     "start": "node server.js",
-    "poststart": "json-server ./src/database/acertaleads.json --watch -p 3333",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

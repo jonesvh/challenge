@@ -22,6 +22,18 @@ const ButtonItem = styled.button<Iprops> `
     width: 6rem;
     cursor: pointer;
     font-size:14px;
+    
+    @media(max-width: 400px){
+        font-size: 14px;
+    }
+    @media(min-width: 401px) and (max-width: 800px) {
+        font-size: 16px;
+    }
+    @media(min-width: 801px) {
+        font-size: 18px;
+        width: 7rem;
+    }
+
     &:hover {
         background: ${ props => props.bgcolorhover};
     }

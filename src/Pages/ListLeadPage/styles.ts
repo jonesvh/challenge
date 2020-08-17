@@ -5,6 +5,10 @@ interface IpropsRowColumn {
     justifycontent?: string;
 }
 
+interface IpropsTable {
+    maxwidth374display?: string;
+}
+
 const Container = styled.div`
     display:flex;
     align-items: center;
@@ -15,7 +19,7 @@ const Content = styled.div`
     flex-direction: column;
     width: 100vw;
     max-width: 700px;
-    padding:0
+    padding:5px
 `
 const Label = styled.div`
     color: #020202;
@@ -57,10 +61,20 @@ const Tbody = styled.tbody`
 const TrBody = styled.tr`
     border-bottom: 1px solid #224D74;
 `
-const ThHead = styled.th`
+
+const TdBody = styled.td<IpropsTable>`
+    @media(max-width: 400px) {
+        display:${ props => props.maxwidth374display};
+    }
+`
+
+const ThHead = styled.th<IpropsTable>`
     text-align: left;
     color: #FFF;
     font-weight: 500;
+    @media(max-width: 400px) {
+        display:${ props => props.maxwidth374display};
+    }
 `
 
 const StyledLink = styled(Link)`
@@ -75,4 +89,4 @@ const StyledLink = styled(Link)`
     } 
 `
 
-export { Container, Content, Label, Filter, Row, Column, Table, Tbody, ThHead, TrBody, StyledLink };
+export { Container, Content, Label, Filter, Row, Column, Table, Tbody, ThHead, TrBody, TdBody, StyledLink };

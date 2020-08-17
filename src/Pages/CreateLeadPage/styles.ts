@@ -10,7 +10,7 @@ const Content = styled.div`
     flex-direction: column;
     width: 100vw;
     max-width: 700px;
-    padding:0
+    padding:5px
 `
 
 export { Container, Content }

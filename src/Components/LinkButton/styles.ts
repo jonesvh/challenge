@@ -28,5 +28,17 @@ const StyledLink = styled(Link)<Iprops> `
     &:visited {
         color: #111;
     }
+
+    @media(max-width: 400px){
+        font-size: 14px;
+    }
+    @media(min-width: 401px) and (max-width: 800px) {
+        font-size: 16px;
+    }
+    @media(min-width: 801px) {
+        font-size: 18px;
+        width: 7rem;
+        padding: 8px;
+    }
 `
 export { ContainerButtonNew, StyledLink }

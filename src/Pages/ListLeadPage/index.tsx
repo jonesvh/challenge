@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 
 import { BsPencilSquare, BsTrash } from 'react-icons/bs'
 
-import { Container, Content, Table, Tbody, ThHead, TrBody, StyledLink } from './styles'
+import { Container, Content, Table, Tbody, ThHead, TrBody, TdBody, StyledLink } from './styles'
 import PageHeader from '../../components/pageheader';
 import ListForm from '../../components/listform';
 import LinkButton from '../../components/linkbutton';
@@ -62,7 +62,7 @@ function ListLeadPage() {
                             <tr>
                                 <ThHead></ThHead>
                                 <ThHead></ThHead>
-                                <ThHead>Email</ThHead>
+                                <ThHead maxwidth374display="none">Email</ThHead>
                                 <ThHead>Name</ThHead>
                                 <ThHead>CPF</ThHead>
                             </tr>
@@ -72,18 +72,18 @@ function ListLeadPage() {
                                 leads.map(function (lead) {
                                     return (
                                         <TrBody key={lead.id}>
-                                            <td>
+                                            <TdBody>
                                                 <StyledLink to={{
                                                     pathname: '/add',
                                                     state: lead.id,
                                                 }}>
                                                     <BsPencilSquare style={{ padding: 0, width: 15, height: 15, cursor: "pointer" }} />
                                                 </StyledLink>
-                                            </td>
-                                            <td style={{ paddingLeft: 0 }}><BsTrash style={{ padding: 0, width: 15, height: 15, cursor: "pointer" }} onClick={(e) => { handleDeleteLead(lead.id) }} /></td>
-                                            <td>{lead.email}</td>
-                                            <td>{lead.nome}</td>
-                                            <td>{CPFMask(lead.cpf)}</td>
+                                            </TdBody>
+                                            <TdBody><BsTrash style={{ padding: 0, width: 15, height: 15, cursor: "pointer" }} onClick={(e) => { handleDeleteLead(lead.id) }} /></TdBody>
+                                            <TdBody maxwidth374display="none">{lead.email}</TdBody>
+                                            <TdBody>{lead.nome}</TdBody>
+                                            <TdBody>{CPFMask(lead.cpf)}</TdBody>
                                         </TrBody>
                                     );
                                 })
