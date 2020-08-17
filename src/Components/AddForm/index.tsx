@@ -6,7 +6,7 @@ import * as yup from 'yup';
 import Input from '../input';
 import Button from '../button';
 import Select from '../select';
-import LinkButton from '../linkButton';
+import LinkButton from '../linkbutton';
 
 import NumberOnly from '../../utils/numberOnly';
 

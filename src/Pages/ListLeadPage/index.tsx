@@ -3,9 +3,9 @@ import React, { useEffect } from 'react';
 import { BsPencilSquare, BsTrash } from 'react-icons/bs'
 
 import { Container, Content, Table, Tbody, ThHead, TrBody, StyledLink } from './styles'
-import PageHeader from '../../components/pageHeader';
-import ListForm from '../../components/listForm';
-import LinkButton from '../../components/linkButton';
+import PageHeader from '../../components/pageheader';
+import ListForm from '../../components/listform';
+import LinkButton from '../../components/linkbutton';
 
 import { useLeads } from '../../context/Leads';
 
