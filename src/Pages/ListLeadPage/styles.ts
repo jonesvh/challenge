@@ -60,6 +60,12 @@ const Tbody = styled.tbody`
 `
 const TrBody = styled.tr`
     border-bottom: 1px solid #224D74;
+    @media(min-width: 401px) and (max-width: 800px) {
+        height: 35px;
+    }
+    @media(min-width: 801px) {
+        height: 40px;
+    }
 `
 
 const TdBody = styled.td<IpropsTable>`
@@ -73,7 +79,14 @@ const ThHead = styled.th<IpropsTable>`
     color: #FFF;
     font-weight: 500;
     @media(max-width: 400px) {
+        font-size: 14px;
         display:${ props => props.maxwidth374display};
+    }
+    @media(min-width: 401px) and (max-width: 800px) {
+        font-size: 16px;
+    }
+    @media(min-width: 801px) {
+        font-size: 18px;
     }
 `
 

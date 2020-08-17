@@ -11,7 +11,7 @@ const InputContainer = styled.div `
     display: flex;
     flex-direction: column;
     width: 40vw;
-    max-width: 330px
+    max-width: 330px;
 `
 
 const InputItem = styled.input<Iprops> `
@@ -43,7 +43,7 @@ const Label = styled.label`
 
 `
 const StyleInputMask = styled(InputMask)<Iprops> `
-    flex:1;
+    flex:0;
     border-color: ${ props => props.bordercolor || "#DCDCDC"};
     border-width: 1px;
     border-radius: 5px;
