@@ -47,6 +47,7 @@ const Table = styled.table`
     border: 0;
     border-collapse: collapse;
     border-spacing: 0;
+    width:100%;
 `
 const Tbody = styled.tbody`
     background: #FFF;
@@ -64,6 +65,7 @@ const ThHead = styled.th`
 
 const StyledLink = styled(Link)`
     padding: 0;
+    text-decoration: none;
     &:visited {
         color: #111;
     }
