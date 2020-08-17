@@ -151,7 +151,7 @@ const AddForm = () => {
     return (
         <StyledForm onSubmit={formik.handleSubmit} autoComplete="off">
             <Row>
-                <Label></Label>
+                <Label>Lead</Label>
             </Row>
             <Row>
                 <Column>

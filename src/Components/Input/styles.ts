@@ -15,7 +15,7 @@ const InputContainer = styled.div `
 `
 
 const InputItem = styled.input<Iprops> `
-    flex:1;
+    flex:0;
     border-color: ${ props => props.bordercolor || "#DCDCDC"};
     border-width: 1px;
     border-radius: 5px;
