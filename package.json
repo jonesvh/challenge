@@ -1,7 +1,7 @@
 {
   "name": "leads",
   "engines": {
-    "node": ">=12.x"
+    "node": "12.x"
   },
   "version": "0.1.0",
   "private": true,
