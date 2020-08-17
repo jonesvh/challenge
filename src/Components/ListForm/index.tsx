@@ -6,7 +6,7 @@ import api from '../../Services/api';
 
 import NumberOnly from '../../utils/numberOnly';
 
-import { useLeads } from '../../Context/Leads';
+import { useLeads } from '../../context/Leads';
 
 import { StyledForm, Row, Column, Label } from './styles'
 

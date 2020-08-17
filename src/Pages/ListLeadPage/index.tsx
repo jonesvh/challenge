@@ -7,7 +7,7 @@ import PageHeader from '../../Components/PageHeader';
 import ListForm from '../../Components/ListForm';
 import LinkButton from '../../Components/LinkButton';
 
-import { useLeads } from '../../Context/Leads';
+import { useLeads } from '../../context/Leads';
 
 import CPFMask from '../../utils/cpfMask';
 import api from '../../Services/api';
