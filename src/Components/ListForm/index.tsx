@@ -57,8 +57,10 @@ const ListForm = () => {
 
     const handleCreateQuery = (values) => {
         let query
-        if (values.name && values.cpf)
-            query = `/leads?nome=${values.name}&cpf=${NumberOnly(values.cpf)}&_sort=id&_order=desc`
+        let name = values.name
+        let cpf = values.cpf
+        if (name && cpf)
+            query = `/leads?nome=${name}&cpf=${NumberOnly(values.cpf)}&_sort=id&_order=desc`
         else {
             if (!values.name && values.cpf) {
                 query = `/leads?cpf=${NumberOnly(values.cpf)}&_sort=id&_order=desc`

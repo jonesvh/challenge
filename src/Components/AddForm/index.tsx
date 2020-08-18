@@ -62,11 +62,9 @@ const AddForm = () => {
             estadoCivil: values.maritalStatus,
             nomeConjugue: values.spouseName
         }).then(() => {
-            alert('Cadastro realizado com sucesso')
             history.push('/')
         }).catch((err) => {
             console.log(err)
-            alert('Erro ao efetuar cadastro.')
         })
     }
 
