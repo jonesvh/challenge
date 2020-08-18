@@ -5,19 +5,19 @@
 Especificações
 =================
 <!--ts-->
-* [WEB](#tabela-de-conteudo)
-  * [Biblioteca](#pre-requisitos)
-    * [React with TypeScript](#local-files)
-  * [Ecossistema](#tabela-de-conteudo)
-    * [React Router – Para navegação](#remote-files)
-    * [Formik – Para gerenciamento de formulários](#multiple-files)
-      * [Yup – Para validação de formulários](#combo)
-     * [React-icons – Para os ícones da aplicação](#tabela-de-conteudo)
-     * [React-input-Mask – Para criar máscaras em inputs](#instalacao)
-     * [Axios – Para comunicação HTTP](#como-usar)
-     * [Styled-Components – Usado como base para a estilização da aplicação](#como-usar)
-* [API](#tabela-de-conteudo)
-  * [JSON-SERVER - Usado para criar uma "API FAKE"](#tabela-de-conteudo)
+* [WEB]
+  * [Biblioteca]
+    * [React with TypeScript]
+  * [Ecossistema]
+    * [React Router – Para navegação]
+    * [Formik – Para gerenciamento de formulários]
+      * [Yup – Para validação de formulários]
+     * [React-icons – Para os ícones da aplicação]
+     * [React-input-Mask – Para criar máscaras em inputs]
+     * [Axios – Para comunicação HTTP]
+     * [Styled-Components – Usado como base para a estilização da aplicação]
+* [API]
+  * [JSON-SERVER - Usado para criar uma "API FAKE"]
 <!--te-->
 
 ## Funcionalidade
