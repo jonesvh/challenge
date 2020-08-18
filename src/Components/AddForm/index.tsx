@@ -14,7 +14,7 @@ import { useHistory, useLocation } from 'react-router';
 
 import api from '../../services/api';
 
-import { StyledForm, Row, Column, Label, ErrorMsg } from './styles'
+import { StyledForm, Row, Column, Label } from './styles'
 
 const AddForm = () => {
 
@@ -35,7 +35,7 @@ const AddForm = () => {
         { nomeEstadoCivil: "" }
     ])
 
-    const formik = useFormik({
+    const { errors, touched, handleSubmit, handleChange, handleBlur, values } = useFormik({
         initialValues: initialValues,
         enableReinitialize: true,
         validationSchema: yup.object().shape({
@@ -113,7 +113,7 @@ const AddForm = () => {
     }
 
     const handleToggleDisabledInput = () => {
-        if (formik.values.maritalStatus.toString() !== "1") {
+        if (values.maritalStatus.toString() !== "1") {
             updateSpouseName()
             return true
         } else {
@@ -122,7 +122,7 @@ const AddForm = () => {
     }
 
     const updateSpouseName = () => {
-        formik.values.spouseName = ''
+        values.spouseName = ''
     }
 
     const handleLoadLead = (dados) => {
@@ -154,7 +154,7 @@ const AddForm = () => {
     }, [])
 
     return (
-        <StyledForm onSubmit={formik.handleSubmit} autoComplete="off">
+        <StyledForm onSubmit={handleSubmit} autoComplete="off">
             <Row>
                 <Label>Lead</Label>
             </Row>
@@ -164,12 +164,12 @@ const AddForm = () => {
                         name="name"
                         label="Name"
                         type="text"
-                        onChange={formik.handleChange}
-                        // //onBlur={formik.handleBlur}
-                        value={formik.values.name}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        value={values.name}
                         flex={1}
-                        error={!formik.touched.name && !formik.errors.name}
-                        msgerror={formik.errors.name}
+                        error={(errors.name?.length !== 0 && errors.name !== undefined) && touched.name}
+                        msgerror={errors.name}
                     />
                 </Column>
                 <Column>
@@ -177,13 +177,13 @@ const AddForm = () => {
                         name="cpf"
                         label="CPF"
                         type="text"
-                        onChange={formik.handleChange}
-                        // onBlur={formik.handleBlur}
-                        value={formik.values.cpf}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        value={values.cpf}
                         flex={1}
                         mask={"999.999.999-99"}
-                        error={!formik.touched.cpf && !formik.errors.cpf}
-                        msgerror={formik.errors.cpf}
+                        error={(errors.cpf?.length !== 0 && errors.cpf !== undefined) && touched.cpf}
+                        msgerror={errors.cpf}
                     />
                 </Column>
             </Row>
@@ -193,12 +193,12 @@ const AddForm = () => {
                         name="email"
                         label="Email"
                         type="email "
-                        onChange={formik.handleChange}
-                        // onBlur={formik.handleBlur}
-                        value={formik.values.email}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        value={values.email}
                         flex={1}
-                        error={!formik.touched.email && !formik.errors.email}
-                        msgerror={formik.errors.email}
+                        error={(errors.email?.length !== 0 && errors.email !== undefined) && touched.email}
+                        msgerror={errors.email}
                     />
                 </Column>
 
@@ -207,9 +207,9 @@ const AddForm = () => {
                     <Select
                         name="maritalStatus"
                         label="Marital Status"
-                        onChange={formik.handleChange}
-                        // onBlur={formik.handleBlur}
-                        value={formik.values.maritalStatus}
+                        onChange={handleChange}
+                        // onBlur={handleBlur}
+                        value={values.maritalStatus}
                         options={
                             maritalStatusOptions.map((e, index) => {
                                 return { value: index, label: e.nomeEstadoCivil }
@@ -226,13 +226,13 @@ const AddForm = () => {
                         name="spouseName"
                         label="Spouse Name"
                         type="text"
-                        onChange={formik.handleChange}
-                        // onBlur={formik.handleBlur}
-                        value={formik.values.spouseName}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        value={values.spouseName}
                         flex={1}
                         disabled={handleToggleDisabledInput()}
-                        error={!formik.touched.spouseName && !formik.errors.spouseName}
-                        msgerror={formik.errors.spouseName}
+                        error={(errors.spouseName?.length !== 0 && errors.spouseName !== undefined) && touched.spouseName}
+                        msgerror={errors.spouseName}
                     />
                 </Column>
                 <Column />

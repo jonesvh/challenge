@@ -54,7 +54,7 @@ const ListForm = () => {
         })
     }
 
-    const formik = useFormik({
+    const { errors, handleSubmit, handleChange, values } = useFormik({
         initialValues: {
             name: '',
             cpf: ''
@@ -73,7 +73,7 @@ const ListForm = () => {
     }, [])
 
     return (
-        <StyledForm onSubmit={formik.handleSubmit} autoComplete="off">
+        <StyledForm onSubmit={handleSubmit} autoComplete="off">
             <Row>
                 <Label>Filters</Label>
             </Row>
@@ -83,8 +83,8 @@ const ListForm = () => {
                         name="name"
                         label="Name"
                         type="text"
-                        onChange={formik.handleChange}
-                        value={formik.values.name}
+                        onChange={handleChange}
+                        value={values.name}
                         flex={1}
                     />
                 </Column>
@@ -93,8 +93,8 @@ const ListForm = () => {
                         name="cpf"
                         label="CPF"
                         type="text"
-                        onChange={formik.handleChange}
-                        value={formik.values.cpf}
+                        onChange={handleChange}
+                        value={values.cpf}
                         flex={1}
                         mask="999.999.999-29"
                     />

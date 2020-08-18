@@ -17,7 +17,7 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 const Input: React.FC<InputProps> = ({ name, label, flex, type, disabled, mask, error, msgerror, ...rest }) => {
 
     let bordercolor = ""
-    if (!error) {
+    if (error) {
         bordercolor = "#ff0000"
     }
     return (
@@ -28,7 +28,7 @@ const Input: React.FC<InputProps> = ({ name, label, flex, type, disabled, mask, 
                 :
                 <StyleInputMask type={type ? type : "text"} id={name} {...rest} mask="999.999.999-99" bordercolor={bordercolor}/>
             }
-            {!error && <ErrorMsg><ErrorMsgText>{msgerror}</ErrorMsgText></ErrorMsg>}
+            {error && <ErrorMsg><ErrorMsgText>{msgerror}</ErrorMsgText></ErrorMsg>}
         </InputContainer>
     )
 }
