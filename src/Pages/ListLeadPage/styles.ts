@@ -99,8 +99,8 @@ const StyledLink = styled(Link)`
     cursor: pointer;
     text-align:center;
     text-decoration: none;
+    color:#111111;
     padding: 0px;
-    color:#111;
     &:visited {
         color: #111;
     } 
