@@ -4,7 +4,7 @@ import { Container, Content } from './styles';
 import PageHeader from '../../components/pageheader';
 import AddForm from '../../components/addform';
 
-function CreateLeadPage() {
+const CreateLeadPage = () => {
     return (
         <Container>
             <Content>

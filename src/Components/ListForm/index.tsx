@@ -2,20 +2,47 @@ import React, { useEffect } from 'react';
 import { useFormik } from 'formik';
 import Input from '../input';
 import Button from '../button';
-import api from '../../services/api';
-
 import NumberOnly from '../../utils/numberOnly';
 
 import { useLeads } from '../../context/Leads';
 
-import { StyledForm, Row, Column, Label } from './styles'
+import api from '../../services/api';
 
+import { StyledForm, Row, Column, Label } from './styles'
 
 const ListForm = () => {
 
-    const { setLeads } = useLeads();
+    const { setLeads } = useLeads(); //hook para usar state global // atualiza a tabela do modulo pages/listleadpage
 
-    function handleFetchFilterLeads(values) {
+    const {
+        handleSubmit,
+        handleChange,
+        values
+    } = useFormik({
+        initialValues: {
+            name: '',
+            cpf: ''
+        },
+        onSubmit: values => {
+            if (values.name || values.cpf) {
+                handleFetchFilterLeads(values)
+            } else {
+                handleFetchAllLeads()
+            }
+        },
+    })
+
+    const handleFetchAllLeads = () => {
+        api.get('/leads?_sort=id&_order=desc', {
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        }).then(response => {
+            setLeads(response.data)
+        })
+    }
+
+    const handleFetchFilterLeads = (values) => {
 
         handleCreateQuery(values)
 
@@ -28,7 +55,7 @@ const ListForm = () => {
         })
     }
 
-    function handleCreateQuery(values) {
+    const handleCreateQuery = (values) => {
         let query
         if (values.name && values.cpf)
             query = `/leads?nome=${values.name}&cpf=${NumberOnly(values.cpf)}&_sort=id&_order=desc`
@@ -43,30 +70,6 @@ const ListForm = () => {
         }
         return query
     }
-
-    function handleFetchAllLeads() {
-        api.get('/leads?_sort=id&_order=desc', {
-            headers: {
-                'Content-Type': 'application/json'
-            },
-        }).then(response => {
-            setLeads(response.data)
-        })
-    }
-
-    const { errors, handleSubmit, handleChange, values } = useFormik({
-        initialValues: {
-            name: '',
-            cpf: ''
-        },
-        onSubmit: values => {
-            if (values.name || values.cpf) {
-                handleFetchFilterLeads(values)
-            } else {
-                handleFetchAllLeads()
-            }
-        },
-    })
 
     useEffect(() => {
         handleFetchAllLeads()

@@ -1,4 +1,4 @@
-function CPFMask(cpf) {
+const CPFMask = (cpf) => {
     const firstSlice = cpf.slice(0, 3)
     const secondSlice = cpf.slice(3, 6)
     const thirdSlice = cpf.slice(6, 9)

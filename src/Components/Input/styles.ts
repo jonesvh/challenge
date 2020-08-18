@@ -26,6 +26,16 @@ const InputItem = styled.input<Iprops> `
         cursor: not-allowed;
         background: #D4D4D4;
     };
+
+    @media(max-width: 400px){
+        font-size: 14px;
+    }
+    @media(min-width: 401px) and (max-width: 800px) {
+        font-size: 16px;
+    }
+    @media(min-width: 801px) {
+        font-size: 18px;
+    }
     
 `
 const Label = styled.label`
@@ -52,7 +62,17 @@ const StyleInputMask = styled(InputMask)<Iprops> `
     &:disabled {
         cursor: not-allowed;
         background: #D4D4D4;
-    };   
+    };
+    
+    @media(max-width: 400px){
+        font-size: 14px;
+    }
+    @media(min-width: 401px) and (max-width: 800px) {
+        font-size: 16px;
+    }
+    @media(min-width: 801px) {
+        font-size: 18px;
+    }
 `
 const ErrorMsg = styled.div `
     display:flex;

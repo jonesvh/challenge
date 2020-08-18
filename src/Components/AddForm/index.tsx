@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import { useFormik } from 'formik';
-import * as yup from 'yup';
+import SchemaAddForm from './schema';
 
 import Input from '../input';
 import Button from '../button';
@@ -17,7 +17,6 @@ import api from '../../services/api';
 import { StyledForm, Row, Column, Label } from './styles'
 
 const AddForm = () => {
-
     const location = useLocation();
     const history = useHistory()
 
@@ -35,42 +34,17 @@ const AddForm = () => {
         { nomeEstadoCivil: "" }
     ])
 
-    const { errors, touched, handleSubmit, handleChange, handleBlur, values } = useFormik({
+    const {
+        errors,
+        touched,
+        handleSubmit,
+        handleChange,
+        handleBlur,
+        values
+    } = useFormik({
         initialValues: initialValues,
         enableReinitialize: true,
-        validationSchema: yup.object().shape({
-            name:
-                yup
-                    .string()
-                    .required("Name is a required field"),
-            cpf:
-                yup
-                    .string().required('CPF is a required field')
-                    .test(
-                        'cpf',
-                        'CPF must be exactly 11 characters',
-                        value => { return NumberOnly(value)?.length === 11 },
-                    ),
-            email:
-                yup
-                    .string()
-                    .matches(/\D+/g, 'only digits here')
-                    .email()
-                    .required('Email is a required field'),
-            maritalStatus:
-                yup
-                    .number(),
-            spouseName:
-                yup
-                    .string()
-                    .when('maritalStatus', {
-                        is: 1,
-                        then:
-                            yup
-                                .string()
-                                .required('Spouse Name is a required field')
-                    })
-        }),
+        validationSchema: SchemaAddForm,
         onSubmit: values => {
             if (isUpdate) {
                 handleUpdateLead(values)
@@ -79,22 +53,6 @@ const AddForm = () => {
             }
         },
     })
-
-    const handleUpdateLead = (values) => {
-        api.put(`/leads/${values.id}`, {
-            nome: values.name,
-            email: values.email,
-            cpf: NumberOnly(values.cpf),
-            estadoCivil: values.maritalStatus,
-            nomeConjugue: values.spouseName
-        }).then(() => {
-            alert('Cadastro atualizado com sucesso')
-            history.push('/')
-        }).catch((err) => {
-            console.log(err)
-            alert('Erro ao atualizar cadastro.')
-        })
-    }
 
     const handleCreateNewLead = (values) => {
         api.post('/leads', {
@@ -109,6 +67,22 @@ const AddForm = () => {
         }).catch((err) => {
             console.log(err)
             alert('Erro ao efetuar cadastro.')
+        })
+    }
+
+    const handleUpdateLead = (values) => {
+        api.put(`/leads/${values.id}`, {
+            nome: values.name,
+            email: values.email,
+            cpf: NumberOnly(values.cpf),
+            estadoCivil: values.maritalStatus,
+            nomeConjugue: values.spouseName
+        }).then(() => {
+            alert('Cadastro atualizado com sucesso')
+            history.push('/')
+        }).catch((err) => {
+            console.log(err)
+            alert('Erro ao atualizar cadastro.')
         })
     }
 
@@ -138,11 +112,9 @@ const AddForm = () => {
     }
 
     useEffect(() => {
-
         api.get('/tiposEstadoCivil').then(response => {
             setMaritalStatusOptions(response.data)
         })
-
         if (location.state !== undefined && location.state !== 0) {
             setLabelButton("Update")
             api.get(`leads/${location.state}`).then(response => {

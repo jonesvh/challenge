@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
+import { BsPencilSquare, BsTrash } from 'react-icons/bs'
+
 interface IpropsRowColumn {
     justifycontent?: string;
 }
@@ -52,6 +54,7 @@ const Table = styled.table`
     border-collapse: collapse;
     border-spacing: 0;
     width:100%;
+    margin-top: 10px;
 `
 const Tbody = styled.tbody`
     background: #FFF;
@@ -101,5 +104,16 @@ const StyledLink = styled(Link)`
         color: #111;
     } 
 `
-
-export { Container, Content, Label, Filter, Row, Column, Table, Tbody, ThHead, TrBody, TdBody, StyledLink };
+const TrashIco = styled(BsTrash)`
+    padding: 0;
+    width: 15;
+    height: 15;
+    cursor: "pointer";
+`
+const PencilIco = styled(BsPencilSquare)`
+    padding: 0;
+    width: 15;
+    height: 15;
+    cursor: "pointer";
+`
+export { Container, Content, Label, Filter, Row, Column, Table, Tbody, ThHead, TrBody, TdBody, StyledLink, TrashIco, PencilIco };
