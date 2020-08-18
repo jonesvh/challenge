@@ -22,6 +22,7 @@ const StyledLink = styled(Link)<Iprops> `
     text-align:center;
     text-decoration: none;
     padding: 10px;
+    color: #111;
     &:hover {
         background: ${ props => props.bgcolorhover};
     },

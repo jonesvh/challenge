@@ -100,6 +100,7 @@ const StyledLink = styled(Link)`
     text-align:center;
     text-decoration: none;
     padding: 0px;
+    color:#111;
     &:visited {
         color: #111;
     } 
